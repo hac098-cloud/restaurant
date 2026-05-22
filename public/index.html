@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#111111" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>餐厅点菜系统</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Tom's Restaurant</h1>
+      <p>手机扫码点餐 · 简单免费版</p>
+    </div>
+    <nav>
+      <button id="menuTab" class="active">点菜</button>
+      <button id="ordersTab">后台订单</button>
+    </nav>
+  </header>
+
+  <main id="menuPage" class="layout">
+    <section>
+      <div class="section-title">
+        <h2>菜单</h2>
+        <input id="searchInput" placeholder="搜索菜名..." />
+      </div>
+
+      <div class="category-bar" id="categoryBar"></div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <aside class="cart">
+      <h2>购物车</h2>
+      <div id="cartItems" class="cart-items"></div>
+
+      <div class="cart-total">
+        <span>总计</span>
+        <strong id="cartTotal">$0.00</strong>
+      </div>
+
+      <input id="customerName" placeholder="客人姓名 / 桌号" />
+      <textarea id="note" placeholder="备注，例如：不要辣、少冰"></textarea>
+
+      <button id="checkoutBtn" class="primary">提交订单</button>
+      <button id="clearCartBtn" class="secondary">清空购物车</button>
+    </aside>
+  </main>
+
+  <main id="ordersPage" class="orders hidden">
+    <div class="section-title">
+      <h2>后台订单</h2>
+      <div>
+        <button id="exportBtn" class="secondary">导出订单 JSON</button>
+        <button id="clearOrdersBtn" class="danger">清空订单</button>
+      </div>
+    </div>
+
+    <p class="hint">默认密码：<strong>1234</strong></p>
+
+    <div id="loginBox" class="login-box">
+      <input id="adminPassword" type="password" placeholder="输入后台密码" />
+      <button id="loginBtn" class="primary">进入后台</button>
+    </div>
+
+    <div id="ordersList" class="orders-list hidden"></div>
+  </main>
+
+  <footer>
+    <p>© 2026 Restaurant Order System</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+</script>
+</body>
+</html>
